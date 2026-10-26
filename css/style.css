@@ -1,0 +1,120 @@
+/* Giovanni Events — Coming Soon */
+
+/* Layout: two edge-to-edge halves. Left = ruled frame split by a center rule; right = curtain with floating flier. */
+:root {
+  --ink: #000000;
+  --paper: #f4f1ec;
+  --taupe: #9f9083;
+  --rule: #6b625b;
+  --btn-hover: #2e2a27;
+  --serif: "Instrument Serif", "Times New Roman", Georgia, serif;
+  --caps: "Lora", Georgia, "Times New Roman", serif;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { background: var(--ink); color: var(--paper); font-family: var(--serif); }
+
+.page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  min-height: 560px;
+}
+
+/* ---------- Left half ---------- */
+.info {
+  background: var(--ink);
+  padding-block: clamp(24px, 5.5vh, 50px);
+  padding-left: max(clamp(16px, 3.75vw, 45px), env(safe-area-inset-left, 0px));
+  padding-right: max(clamp(16px, 3.75vw, 45px), env(safe-area-inset-right, 0px));
+  display: flex;
+  min-width: 0;
+}
+.frame {
+  flex: 1;
+  border: 1px solid var(--rule);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  min-width: 0;
+}
+.upper, .lower {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px 16px;
+}
+.upper { border-bottom: 1px solid var(--rule); gap: clamp(24px, 4.2vh, 44px); }
+.upper .logo { width: min(48%, 270px); height: auto; display: block; }
+.soon {
+  margin: 0;
+  font-size: clamp(18px, 1.85vw, 26px);
+  color: var(--taupe);
+  font-weight: 400;
+}
+
+.lower { position: relative; gap: clamp(14px, 2.2vh, 22px); }
+.event { margin: 0; font-weight: 400; font-size: clamp(18px, 1.85vw, 26px); line-height: 1.3; text-wrap: balance; }
+.event .name { color: var(--paper); display: block; }
+.event .when { color: var(--taupe); display: block; }
+
+.reserve {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: clamp(15px, 1.45vw, 20px);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--paper);
+  border: 1px solid var(--taupe);
+  border-radius: 999px;
+  padding: 0.42em 1.6em 0.38em;
+  transition: background-color .2s ease, color .2s ease;
+}
+.reserve:hover { background: var(--btn-hover); color: var(--taupe); }
+.reserve:active { background: var(--taupe); color: var(--ink); }
+.reserve:focus-visible { outline: 1px solid var(--paper); outline-offset: 4px; }
+
+.copyright {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: clamp(10px, 1.6vh, 14px);
+  margin: 0;
+  font-family: var(--caps);
+  font-weight: 600;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+/* ---------- Right half ---------- */
+.stage {
+  position: relative;
+  background: var(--ink) url("../images/curtain-01.jpg") center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-width: 0;
+}
+.flier {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 76%;
+  max-height: 76%;
+  box-shadow: 0 18px 40px rgba(0,0,0,.55), 0 4px 12px rgba(0,0,0,.4);
+}
+
+/* ---------- Stacked on narrow screens ---------- */
+@media (max-width: 760px) {
+  .page { grid-template-columns: 1fr; height: auto; min-height: 0; }
+  .info { min-height: 100svh; }
+  .stage { padding-block: 56px; }
+  .flier { max-width: min(82%, 420px); max-height: none; }
+}
+
+@media (prefers-reduced-motion: reduce) { .reserve { transition: none; } }
