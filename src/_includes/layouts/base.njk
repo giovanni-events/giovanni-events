@@ -18,5 +18,11 @@
   {% include "partials/footer.njk" %}
   <script src="/assets/js/carousel.js" defer></script>
   <script src="/assets/js/lightbox.js" defer></script>
+  <script>
+    // Invite, confirmation and recovery links from Netlify Identity land on the homepage; send them to the CMS.
+    if (/(invite|confirmation|recovery)_token=/.test(location.hash) && !location.pathname.startsWith("/admin")) {
+      location.replace("/admin/" + location.hash);
+    }
+  </script>
 </body>
 </html>
