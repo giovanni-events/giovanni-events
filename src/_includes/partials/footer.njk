@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <ul class="site-footer__links">
+      {% for link in site.footer_links %}
+      <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+      {% endfor %}
+    </ul>
+    <p class="site-footer__copy">© {{ year }} {{ site.title }}. All rights reserved.</p>
+  </div>
+</footer>

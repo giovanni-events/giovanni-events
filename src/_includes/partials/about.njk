@@ -1,0 +1,20 @@
+{% set about = homepage.about %}
+<section class="about" id="about" aria-labelledby="about-heading">
+  <h2 class="section-heading about__heading" id="about-heading">About</h2>
+
+  <div class="about__intro">{{ about.intro | markdown | safe }}</div>
+
+  <div class="about__services" id="services">
+    <h3 class="about__services-label">Services</h3>
+    <table class="services-table">
+      <thead>
+        <tr>{% for s in about.services %}<th scope="col">{{ s.title }}</th>{% endfor %}</tr>
+      </thead>
+      <tbody>
+        <tr>{% for s in about.services %}<td>{{ s.description }}</td>{% endfor %}</tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="about__closing">{{ about.closing | markdown | safe }}</div>
+</section>

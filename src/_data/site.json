@@ -1,0 +1,13 @@
+{
+  "title": "Giovanni Events",
+  "nav": [
+    { "label": "Home", "url": "/" },
+    { "label": "Events", "url": "/events/" },
+    { "label": "Services", "url": "/#services" },
+    { "label": "About", "url": "/#about" },
+    { "label": "FAQ", "url": "/faq/" }
+  ],
+  "footer_links": [
+    { "label": "Privacy Notice", "url": "/privacy/" }
+  ]
+}

@@ -1,0 +1,29 @@
+theme:
+  background_color: "#0E4F6E"
+  highlight_color: "#9fd0c8"
+hero:
+  media_type: Photo
+  hero_image: /assets/uploads/hero.jpg
+  hero_video: ""
+  poster_image: ""
+  tagline: Unforgettable events, Chicago style.
+about:
+  intro: >-
+    Giovanni Events plans and produces weddings, social gatherings and corporate
+    events across Chicago. This is sample text to be replaced with the client's
+    own introduction.
+  services:
+    - title: Event Planning
+      description: Coordinates weddings, social gatherings, and corporate events.
+    - title: Design & Decor
+      description: Handles event decor and styling.
+    - title: Catering & Menus
+      description: Creates custom dinner and cocktail pairing menus.
+  closing: >-
+    Sample closing paragraph. Replace with the client's own words about their
+    approach and how to get in touch.
+newsletter:
+  heading: Newsletter
+  copy: >-
+    **Be first to know** about upcoming events, new services and special
+    offers. Sample copy to be replaced with the client's own.

@@ -1,0 +1,25 @@
+<section class="gallery" id="gallery" aria-labelledby="gallery-heading">
+  <h2 class="section-heading gallery__heading" id="gallery-heading">Gallery</h2>
+
+  <div class="gallery__wrap">
+    <ul class="gallery__grid">
+      {% for photo in gallery.photos %}
+      <li class="gallery__item gallery__item--{{ photo.size | lower or 'small' }}">
+        <button class="gallery__button" type="button" data-caption="{{ photo.caption }}">
+          <img src="{{ photo.image }}" alt="{{ photo.alt }}" loading="lazy" style="object-position: {{ photo.focus or 'center' }}">
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <dialog class="lightbox" aria-label="Enlarged photo">
+    <button class="lightbox__close" type="button" aria-label="Close"><span aria-hidden="true">×</span></button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Previous photo"><span aria-hidden="true">‹</span></button>
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" src="" alt="">
+      <figcaption class="lightbox__caption"></figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Next photo"><span aria-hidden="true">›</span></button>
+  </dialog>
+</section>

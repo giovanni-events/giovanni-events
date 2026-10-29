@@ -1,0 +1,8 @@
+---
+layout: layouts/base.njk
+---
+<article class="event-page">
+  <h1>{{ header_line_1 }} {{ header_line_2 }} {{ subhead }}</h1>
+  <p>{{ start | dayOfWeek }} · {{ start | monthDay }} · {{ start | timeRange(end_time) }}</p>
+  {{ content | safe }}
+</article>

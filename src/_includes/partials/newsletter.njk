@@ -1,0 +1,15 @@
+{% set newsletter = homepage.newsletter %}
+<section class="newsletter" id="newsletter" aria-labelledby="newsletter-heading">
+  <div class="newsletter__content">
+    <h2 class="section-heading newsletter__heading" id="newsletter-heading">{{ newsletter.heading }}</h2>
+    <div class="newsletter__copy">{{ newsletter.copy | markdown | safe }}</div>
+    <form class="newsletter__form" name="newsletter" method="POST" action="/subscribed/" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="newsletter">
+      <p class="newsletter__trap" hidden><label>Leave this empty <input name="bot-field"></label></p>
+      <label class="visually-hidden" for="newsletter-email">Email address</label>
+      <input class="newsletter__input" id="newsletter-email" type="email" name="email" placeholder="email" autocomplete="email" required>
+      <button class="newsletter__button" type="submit">Subscribe</button>
+    </form>
+  </div>
+  <div class="newsletter__block" aria-hidden="true"></div>
+</section>

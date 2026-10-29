@@ -1,0 +1,12 @@
+{% set hero = homepage.hero %}
+<section class="hero">
+  {% if hero.media_type == "Video" and hero.hero_video %}
+  <video class="hero__media" src="{{ hero.hero_video }}" poster="{{ hero.poster_image }}" autoplay muted loop playsinline aria-hidden="true"></video>
+  {% elif hero.hero_image %}
+  <img class="hero__media" src="{{ hero.hero_image }}" alt="">
+  {% endif %}
+  <div class="hero__text">
+    <h1 class="hero__title">{{ site.title }}</h1>
+    <p class="hero__tagline">{{ hero.tagline }}</p>
+  </div>
+</section>

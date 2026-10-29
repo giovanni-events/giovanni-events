@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% if env.context != "production" %}<meta name="robots" content="noindex">{% endif %}
+  <title>{{ title or site.title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=DM+Sans:wght@500;600&family=Unbounded:wght@200;900&display=swap">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body style="--theme-bg: {{ homepage.theme.background_color }}; --theme-highlight: {{ homepage.theme.highlight_color }};">
+  {% include "partials/nav.njk" %}
+  <main id="main">
+    {{ content | safe }}
+  </main>
+  {% include "partials/footer.njk" %}
+  <script src="/assets/js/carousel.js" defer></script>
+  <script src="/assets/js/lightbox.js" defer></script>
+</body>
+</html>

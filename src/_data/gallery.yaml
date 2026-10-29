@@ -1,0 +1,41 @@
+photos:
+  - image: /assets/uploads/gallery-1.svg
+    caption: Sample caption for photo 1
+    alt: Sample photo 1
+    size: Large
+    focus: center
+  - image: /assets/uploads/gallery-2.svg
+    caption: Sample caption for photo 2
+    alt: Sample photo 2
+    size: Small
+    focus: center
+  - image: /assets/uploads/gallery-3.svg
+    caption: Sample caption for photo 3
+    alt: Sample photo 3
+    size: Small
+    focus: center
+  - image: /assets/uploads/gallery-4.svg
+    caption: Sample caption for photo 4
+    alt: Sample photo 4
+    size: Wide
+    focus: center
+  - image: /assets/uploads/gallery-5.svg
+    caption: Sample caption for photo 5
+    alt: Sample photo 5
+    size: Tall
+    focus: center
+  - image: /assets/uploads/gallery-6.svg
+    caption: Sample caption for photo 6
+    alt: Sample photo 6
+    size: Feature
+    focus: center
+  - image: /assets/uploads/gallery-7.svg
+    caption: Sample caption for photo 7
+    alt: Sample photo 7
+    size: Tall
+    focus: center
+  - image: /assets/uploads/gallery-8.svg
+    caption: Sample caption for photo 8
+    alt: Sample photo 8
+    size: Feature
+    focus: center

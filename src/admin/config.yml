@@ -1,0 +1,98 @@
+backend:
+  name: git-gateway
+  branch: redesign # switch to main at launch
+
+media_folder: src/assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: events
+    label: Events
+    label_singular: Event
+    folder: src/events
+    create: true
+    extension: md
+    slug: "{{slug}}"
+    summary: "{{header_line_1}} {{header_line_2}} {{subhead}}"
+    fields:
+      - { name: title, label: Internal title, widget: string, hint: "For your reference only." }
+      - { name: published, label: Published, widget: boolean, default: true }
+      - { name: start, label: Start date and time, widget: datetime, format: "YYYY-MM-DDTHH:mm", date_format: "MMM D, YYYY", time_format: "h:mm A", picker_utc: false, hint: "Chicago time." }
+      - { name: end_time, label: End time, widget: string, pattern: ["^([01]\\d|2[0-3]):[0-5]\\d$", "Use 24-hour format, e.g. 15:00"], hint: "24-hour, e.g. 15:00" }
+      - { name: venue_name, label: Venue name, widget: string }
+      - { name: venue_address, label: Venue address, widget: text }
+      - { name: header_line_1, label: Header line 1, widget: string, hint: "Small line, e.g. It's a" }
+      - { name: header_line_2, label: Header line 2, widget: string, hint: "Big word, max 8 characters", pattern: ["^.{1,8}$", "Max 8 characters"] }
+      - { name: subhead, label: Subhead, widget: string, hint: "e.g. Drag Brunch" }
+      - { name: short_description, label: Short description, widget: text, hint: "Shown on the homepage card. Max 160 characters.", pattern: ["^[\\s\\S]{1,160}$", "Max 160 characters"] }
+      - name: performers
+        label: Performers and hosts
+        widget: list
+        required: false
+        fields:
+          - { name: name, label: Name, widget: string }
+          - { name: role, label: Role, widget: select, options: [Performer, Host], default: Performer }
+      - { name: poster, label: Poster, widget: image }
+      - { name: poster_alt, label: Poster description, widget: string, hint: "Describe the poster for people who can't see it." }
+      - { name: bg_color, label: Card background color, widget: color, required: false, allowInput: true, enableAlpha: false, hint: "Optional. Leave empty to use the homepage color. Pick a dark color so the white text stays readable." }
+      - { name: highlight_color, label: Card highlight color, widget: color, required: false, allowInput: true, enableAlpha: false, hint: "Optional. Used for the date, venue and description. Pick a light color that stands out on the background." }
+      - { name: ticket_url, label: Ticket link, widget: string }
+      - { name: button_text, label: Button text, widget: string, default: Buy tickets }
+      - { name: body, label: Full description, widget: markdown }
+
+  - name: pages
+    label: Site content
+    files:
+      - name: homepage
+        label: Homepage
+        file: src/_data/homepage.yaml
+        fields:
+          - label: Colors
+            name: theme
+            widget: object
+            fields:
+              - { name: background_color, label: Background color, widget: color, allowInput: true, enableAlpha: false, hint: "Dark color used for the event cards, gallery and About text. White text sits on it, so keep it dark." }
+              - { name: highlight_color, label: Highlight color, widget: color, allowInput: true, enableAlpha: false, hint: "Light accent used for dates, venue and descriptions on the dark background." }
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { name: media_type, label: Background type, widget: select, options: [Photo, Video], default: Photo }
+              - { name: hero_image, label: Hero photo, widget: image, required: false }
+              - { name: hero_video, label: Hero video (MP4), widget: file, required: false, hint: "Keep under about 10 MB. It plays muted and loops." }
+              - { name: poster_image, label: Video placeholder image, widget: image, required: false, hint: "Shown while the video loads." }
+              - { name: tagline, label: Tagline, widget: string }
+          - label: About
+            name: about
+            widget: object
+            fields:
+              - { name: intro, label: Intro, widget: markdown }
+              - name: services
+                label: Services
+                widget: list
+                min: 2
+                max: 4
+                fields:
+                  - { name: title, label: Title, widget: string }
+                  - { name: description, label: Description, widget: text }
+              - { name: closing, label: Closing paragraph, widget: markdown }
+          - label: Newsletter
+            name: newsletter
+            widget: object
+            fields:
+              - { name: heading, label: Heading, widget: string }
+              - { name: copy, label: Copy, widget: markdown, buttons: [bold, italic, link] }
+      - name: gallery
+        label: Gallery
+        file: src/_data/gallery.yaml
+        fields:
+          - name: photos
+            label: Photos
+            widget: list
+            hint: "Drag to reorder."
+            fields:
+              - { name: image, label: Photo, widget: image }
+              - { name: caption, label: Caption, widget: string, required: false }
+              - { name: alt, label: Description for screen readers, widget: string }
+              - { name: size, label: Size, widget: select, options: [Small, Wide, Tall, Large, Feature], default: Small }
+              - { name: focus, label: Focus, widget: select, options: [center, top, bottom], default: center }
